@@ -1,0 +1,21 @@
+<div class="layout">
+<mat-card class="article-container">
+    <mat-card-header>
+        <mat-card-title>{{article.title}}</mat-card-title>
+        <mat-card-subtitle>
+            <div *ngIf="article.author">{{article.author}}</div> 
+            <div>{{article.publishedAt | date: 'longDate'}}</div>
+          </mat-card-subtitle>
+    </mat-card-header>  
+    <img *ngIf="article.urlToImage" class="img-article" src={{article.urlToImage}} alt="image of article">
+    <mat-card-content>
+        <p class="description"  *ngIf="article.description">
+            {{article.description}}
+        </p>
+        <p class="content" *ngIf="article.content">
+           {{article.content}}
+        </p>
+        <a class="source-name-article" *ngIf="article.url" href="{{article.url}}">{{article.source.name}}</a>
+    </mat-card-content>
+</mat-card>
+</div>

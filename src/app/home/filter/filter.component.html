@@ -1,0 +1,36 @@
+<form #form="ngForm" class="example-form" (submit)=saved(queries)>
+    <mat-form-field class="space example-full-width">
+      <mat-label>Key Phrase</mat-label>
+      <input matInput type="text" name="q" placeholder="Search"
+      [(ngModel)]="queries.q">
+    </mat-form-field>
+
+    <mat-form-field class="space" appearance="fill" >
+        <mat-label>Select Category</mat-label>
+        <mat-select [(ngModel)]='queries.category' name="category">
+          <mat-option *ngFor="let category of categories" 
+          [value]="category">
+              {{category}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="space" appearance="fill" >
+        <mat-label>Select Country</mat-label>
+        <mat-select [(ngModel)]='queries.country' name="country">
+          <mat-option *ngFor="let country of countries" 
+          [value]="country.key">
+            {{country.value}}                               
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="space example-full-width">
+        <mat-label>Page Size</mat-label>
+        <input matInput type="text"
+         [(ngModel)]="queries.pageSize" name="pageSize">
+      </mat-form-field>
+
+      <button class="button space" [disabled]="form.invalid" 
+         type="submit">Search</button>  
+</form>

@@ -1,0 +1,28 @@
+<div class="layout">
+<mat-card class="example-container"  *ngFor="let article of results">
+<a [routerLink]="['/article']" 
+  routerLinkActive="active"
+  (click)="open(article)">
+    <img *ngIf="article.urlToImage" class="img-article-list" src={{article.urlToImage}} alt="image of article">
+    <a><mat-card-title class="list-title">{{article.title}}</mat-card-title></a>
+    <mat-card-subtitle>{{article.publishedAt | date:'shortTime'}}</mat-card-subtitle>
+    <mat-card-content>
+      <p class="description"  *ngIf="article.description">
+          {{article.description}}
+      </p>
+      <p class="link-to-article">Read full Story<i class="arrow down"></i></p>
+  </mat-card-content>
+</a>
+</mat-card>
+</div>
+
+<nav [hidden]="totalPages.length <= 1">
+  <ul class="pagination">
+    <li *ngFor="let pageNumber of totalPages"
+       (click)="setPageTo(pageNumber)">
+
+      <a [ngClass]="{'active': pageNumber === currentPage}" class="page-link" >{{ pageNumber }}</a>
+
+    </li>
+  </ul>
+</nav>  
